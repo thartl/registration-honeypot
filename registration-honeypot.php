@@ -82,7 +82,7 @@ final class Registration_Honeypot {
 		} ?>
 
         <style type="text/css">.th_rh_name_field { display: none; }</style>
-        
+
 	<?php }
 
 	/**
