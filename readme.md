@@ -5,3 +5,7 @@ A plugin for stopping most spambots from registering user accounts on WordPress 
 This plugin isn't an end-all solution to spam registrations.  It's a simple solution for one type of spam registration issue that has come in handy for me many times.
 
 There's no configuration.  Simply install, activate, and let the plugin do its work.
+
+# This fork
+
+Updated to work with WooCommerce registration form.  Other registration forms are not targeted.
