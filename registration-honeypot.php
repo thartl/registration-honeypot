@@ -38,10 +38,9 @@ final class Registration_Honeypot {
 	public function __construct() {
 
 		add_action( 'plugins_loaded',      array( $this, 'i18n'           ), 2  );
-		add_action( 'login_head',          array( $this, 'print_styles'   )     );
-		add_action( 'register_form',       array( $this, 'register_form'  ), 99 );
-		add_action( 'register_post',       array( $this, 'check_honeypot' ), 0  );
-		add_action( 'login_form_register', array( $this, 'check_honeypot' ), 0  );
+		add_action( 'wp_head',          array( $this, 'print_styles'   )     );
+		add_action( 'woocommerce_register_form',       array( $this, 'register_form'  ), 99 );
+		add_action( 'woocommerce_register_post',       array( $this, 'check_honeypot' ), 0  );
 	}
 
 	/**
@@ -76,8 +75,14 @@ final class Registration_Honeypot {
 	 * @access public
 	 * @return void
 	 */
-	public function print_styles() { ?>
-		<style type="text/css">.th_rh_name_field { display: none; }</style>
+	public function print_styles() {
+
+		if ( ! is_account_page() ) {
+			return;
+		} ?>
+
+        <style type="text/css">.th_rh_name_field { display: none; }</style>
+        
 	<?php }
 
 	/**
@@ -108,7 +113,7 @@ final class Registration_Honeypot {
 		add_action( 'login_footer', array( $this, 'print_scripts' ), 25 ); ?>
 
 		<p class="th_rh_name_field">
-			<label for="th_rh_name"><?php _e( 'Only fill in if you are not human', 'registration-honeypot' ); ?></label><br />
+			<label for="th_rh_name"><?php _e( 'Only fill in if you are not human', 'registration-honeypot' ); ?><br />
 			<input type="text" name="th_rh_name" id="th_rh_name" class="input" value="" size="25" autocomplete="off" /></label>
 		</p>
 	<?php }
