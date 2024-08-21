@@ -77,7 +77,7 @@ final class Registration_Honeypot {
 	 */
 	public function print_styles() {
 
-		if ( ! is_account_page() ) {
+		if ( function_exists( 'is_account_page' ) && ! is_account_page() ) {
 			return;
 		} ?>
 
